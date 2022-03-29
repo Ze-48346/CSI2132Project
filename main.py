@@ -24,7 +24,32 @@ def index():
     return render_template('HomePage.html')
 
 
+@app.route("/login")
+def login_page():
+    return render_template('Signin Template for Bootstrap.html')
+
+
+@app.route("/patient")
+def patient_page():
+    return render_template('PatientUI.html')
+
+
+@app.route("/receptionist")
+def receptionist_page():
+    return render_template('ReceptionistUI.html')
+
+
+@app.route("/dentist")
+def dentist_page():
+    return render_template('DentistsUI.html')
+
+
+@app.route("/signup")
+def signup():
+    return render_template('signup.html')
+
+
 if __name__ == '__main__':
-   # db.drop_all()
+    # db.drop_all()
 
     app.run(debug=False)
