@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Dental Clinic Management System</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <title>Welcome to DCMS System!</title>
+</head>
+<body>
+<h2>Receptionist</h2>
+        <form method="post">
+            <h3>
+                Add patient
+            </h3>
+            <label for="add_firstname">
+                Patient's First Name
+            </label>
+            <input type="text" id="add_firstname" name="add_firstname" class="form-control" required>
+
+            <label for="add_lastname">
+                Patient's Last Name
+            </label>
+            <input type="text" id="add_lastname" name="add_lastname" class="form-control" required>
+
+            <label for="add_SSN" >Patient's SSN</label>
+        <input type="text" id="add_SSN" class="form-control" name="add_SSN" placeholder="SSN" required>
+
+            <label for="add_appointment_date">Appointment Date</label>
+
+            <input type="date" id="add_appointment_date"  name="add_appointment_date" class="form-control" required>
+
+            <label for="add_start_time">Start Time</label>
+            <input type="text" id="add_start_time"  name="add_start_time" class="form-control" required>
+
+            <label for="add_end_time">End Time</label>
+            <input type="text" id="add_end_time"  name="add_end_time" class="form-control" required>
+
+            <label for="add_dentist_SSN">Dentist's SSN</label>
+            <input type="text" id="add_dentist_SSN" name="add_dentist_SSN" class="form-control" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Add" name="Add">Add</button>
+
+        </form>
+        <hr>
+        <ul>
+            {% for message in get_flashed_messages() %}
+                <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+
+        <form method="post">
+            <h3>
+                Update Patient's information
+            </h3>
+
+            <label for="update_SSN" >Patient's SSN</label>
+        <input type="text" id="update_SSN" class="form-control" name="update_SSN" placeholder="SSN" required>
+
+            <label for="update_appointment_date"> Appointment Date</label>
+
+        <input type="date" id="update_appointment_date" name="update_appointment_date" class="form-control" required>
+
+            <label for="update_start_time">Start Time</label>
+            <input type="text" id="update_start_time"  name="update_start_time" class="form-control" required>
+
+             <label for="update_end_time">End Time</label>
+            <input type="text" id="update_end_time" name="update_end_time" class="form-control" required>
+            <label for="update_dentist_SSN">
+                Dentist's SSN
+
+            </label>
+            <input type="text" id="update_dentist_SSN" name="update_dentist_SSN" class="form-control" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Update" name="Update">Update</button>
+
+        </form>
+        <hr>
+        <ul>
+            {% for message in get_flashed_messages() %}
+                <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <h3>
+            List all Dentists
+        </h3>
+        <form method="post">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="List" name="List"> List</button>
+        </form>
+        <hr>
+        <ul>
+                {% for dentist in dentists %}
+            <li>ALL Dentist_SSN:</li>
+                <li>Dentist_SSN :{{dentist.SSN}}</li>
+                {% endfor %}
+        </ul>
+
+</body>
+</html>

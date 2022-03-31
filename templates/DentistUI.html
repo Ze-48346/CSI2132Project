@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Dental Clinic Management System</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <title>Welcome to DCMS System!</title>
+</head>
+<body>
+<h2>Dentist</h2>
+        <h3>
+            Check Upcoming appointment
+        </h3>
+        <form method="post">
+        <label for="Check_appointment">
+            Your SSN
+        </label>
+        <input type="text" id="Check_appointment" class="form_control" name="Check_appointment" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Check" name="Check"> Check</button>
+        </form>
+        <hr>
+        <ul>
+            {% for message in get_flashed_messages() %}
+                <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for appointment in appointments %}
+            <li>Upcoming Appointment</li>
+                <li>Appointment Date:{{appointment.date}}</li>
+                <li>Appointment start time:{{appointment.start_time}}</li>
+                <li>Appointment end time: {{appointment.end_time}}</li>
+                <li>Patient_SSN: {{appointment.patient_SSN}}</li>
+            {% endfor %}
+        </ul>
+
+
+        <hr>
+        <h3>
+            Check Patient's Medical History
+        </h3>
+
+        <form method="post">
+            <label for="check_patientMedical">
+            Patient's SSN
+            </label>
+            <input type="text" id="check_patientMedical" class="form_control" name="check_historyMedical" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="check_PMH" value="check_PMH"> Check</button>
+
+        </form>
+        <hr>
+        <ul>
+        {% for message in get_flashed_messages() %}
+                <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+         <ul>
+
+                {% for h in h_medicals %}
+             <li>Medical Record</li>
+                <li>Passed Appointment Date: {{h.pass_appointmentdate}}</li>
+                <li>Record : {{h.record}}</li>
+             {% endfor %}
+        </ul>
+</body>
+</html>
